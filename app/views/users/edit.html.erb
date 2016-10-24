@@ -1,0 +1,32 @@
+<h1>Edit Your Member Profile:</h1>
+
+<div class="errors">
+      <% if flash[:errors] %>
+      <h4><%= flash[:errors] %></h4>
+      <%end%>
+</div>
+
+<form action='/users/<%= @user.id %>' method='post'>
+   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input name="_method" value="patch" type="hidden">
+
+  <label for="fname">First Name: <input type="name" name="user[first_name]" value="<%= @user.first_name %>"></label><br><br>
+  <label for="lname">Last Name: <input type="name" name="user[last_name]" value="<%= @user.last_name %>"></label><br><br>
+  <label for="email">Email: <input type="email" name="user[email]" value="<%= @user.email %>"></label><br><br>
+  <label for="city">City: <input type="name" name="user[city]" value="<%= @user.city %>"></label><br><br>
+  <label for="state">State:</label> <%= select_tag :state, options_for_select(us_states, @user.state), :name => "user[state]" %><br><br>
+  <label for="password">Password: <input type="password" name="user[password]"></label><br><br>
+  <label for="password_confirmation">Confirm Password: <input type="password" name="user[password_confirmation]"></label><br><br>
+
+  <input type="submit" value="Update Records">
+</form><br><br><hr>
+
+<button type="button" name="back"><a href="/users/<%= @user.id %>">Back To Events Dashboard</a></button><br> <br><hr>
+
+<div class="destroyMe">
+   <form action='/users/<%= @user.id %>' method='post'>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input name="_method" value="delete" type="hidden">
+      <input type="submit" value="Delete My Account">
+   </form>
+</div>

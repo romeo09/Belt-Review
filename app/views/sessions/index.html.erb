@@ -1,0 +1,26 @@
+<h1>Welcome To Events Dojo!</h1>
+
+<h4>Already A Member?</h4>
+<h5>Login Below:</h5>
+
+<div class="errors">
+      <% if flash[:errors] %>
+      <h4><%= flash[:errors] %></h4>
+      <%end%>
+</div>
+
+<div id="login">
+   <form action="/sessions" method="post" role="form">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+      <label for="email">Email:  </label><input type="email" class="form-control" name="email" placeholder="Enter your email">
+      <label for="password">Password:  </label><input type="password" class="form-control" name="password" placeholder="Enter your password"><br><br>
+      <input type="submit" value="Sign Me In!!">
+   </form><br><br><br>
+</div>
+
+<div class="newUser">
+   <h2>Not A Member?</h2>
+   <h4>Click 'Become A Member' Below</h4>
+   <button type="button" name="new"><a href="/users/new">Become A Member!!</a></button>
+</div>

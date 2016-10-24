@@ -1,0 +1,21 @@
+<h1>Edit Your Event:</h1>
+
+<form action='/events/<%= @events.id %>' method='post'>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input name="_method" value="patch" type="hidden">
+
+    <label for="name">Name:  <input id="name" type="text" name="event[name]" value="<%= @events.name%>"></label><br><br>
+    <label for="date">Date:  <input id="date" type="date" name="event[date]" value="<%= @events.date%>"></label><br><br>
+    <label for="city">City:  <input id="city" type="text" name="event[city]" value="<%= @events.city%>"></label><br><br>
+    <label for="state">State:  </label><%= select_tag :state, options_for_select(us_states, @events.state),  :name => "event[state]" %> <br><br>
+
+    <input type="submit" value="Save Changes">
+</form><br><br><hr>
+
+<button type="button" name="back"><a href="/users/<%= @user.id %>">Back To Events Dashboard</a></button><br> <br><hr>
+
+<form action='/events/<%= @events.id %>' method='post'>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input name="_method" value="delete" type="hidden">
+  <input type="submit" value="Delete Account">
+</form>

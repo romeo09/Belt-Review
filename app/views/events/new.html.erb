@@ -1,0 +1,21 @@
+<h1>Create A New Events:</h1>
+
+<div class="errors">
+      <% if flash[:errors] %>
+      <h4><%= flash[:errors] %></h4>
+      <%end%>
+</div>
+
+<form class="new" action="/events" method="post">
+   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+   <label for="name">Name: <input type="name" name="event[name]" placeholder="Enter Event Name Here"></label><br><br>
+   <label for="date">Date: <input type="date" name="event[date]"></label><br><br>
+   <label for="city">City: <input type="text" name="event[city]" placeholder="Enter City For Event"></label><br><br>
+   <label for="state">State:</label> <%= select_tag :state, options_for_select(us_states), :name => "event[state]" %>
+
+      <br><br>
+
+   <input type="submit" value="Create New Event">
+</form><hr>
+<br><br><button type="button" name="home"><a href="/users/#{@user.id}">Back To Events Dashboard</a></button>
